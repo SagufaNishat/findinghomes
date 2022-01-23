@@ -1,0 +1,79 @@
+body {
+	background-image: url(../img/bg1.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+h1 {
+	margin-top: 0px;
+}
+
+.col-sm-2 {
+	text-align: right;
+	padding-right: 0px;
+}
+
+.col-sm-10 {
+	padding-left: 0px;
+}
+
+.content {
+	margin-top: 2%;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.connect {
+	text-align: right;
+	margin-right: 3%;
+}
+
+table tbody {
+	background: white;
+}
+
+.head-row {
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.btn {
+	background: #222;
+	color: #9d9d9d;
+	border: 0px;
+}
+
+.product__list__item {
+	border-radius: 2px;
+	background-color: var(- -pure-white);
+	border: solid 1px var(- -dark-grey);
+}
+
+.product__list__item--icons {
+	display: inline-block;
+	float: left;
+	padding-top: 5px;
+}
+
+.product__list__item--icons a {
+	color: var(- -middle-grey);
+}
+
+.product__list__item--icons a:hover {
+	color: var(- -dark-grey);
+}
+
+/* Added the two below */
+.product__list__item--icons .selected {
+	color: var(- -light-pink);
+}
+
+.product__list__item--icons .selected:hover {
+	color: var(- -pink);
+}
+
+#heart--liked {
+	/*display: none; REMOVED */
+	transition: .2s;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>FML Register</title>
+<link th:rel="stylesheet"
+	th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<link th:href="@{../css/register.css}" rel="stylesheet" />
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div
+				class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+				<div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+					<h2 class="fs-title">SetUp Your User Account</h2>
+					<form id="msform" action="#" th:action="@{/register}" method="post"
+						th:object="${profile}">
+						<fieldset>
+							<input type="text" th:field="*{fName}" placeholder="First Name"
+								th:required="required" /> <input type="text"
+								th:field="*{lName}" placeholder="Last Name"
+								th:required="required" /> <input type="email"
+								th:field="*{email}" placeholder="Email" th:required="required" />
+							<input type="text" th:field="*{phone}" placeholder="Phone"
+								th:required="required" /> <input type="text"
+								th:field="*{gender}" placeholder="Gender" th:required="required" />
+							<input type="password" id="pswd" th:field="*{pswd}"
+								placeholder="Password" th:required="required" /> <input
+								type="password" id="repswd" placeholder="Re-Type Password"
+								/ th:required="required" />
+							<p class="error" th:if="${error}" th:text="${error}" />
+							<button type="submit" class="next action-button"
+								onclick="return Validate()">SIGN UP</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		function Validate() {
+			var password = document.getElementById("pswd").value;
+			var confirmPassword = document.getElementById("repswd").value;
+			if (password != confirmPassword) {
+				alert("Passwords do not match.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+</body>
+</html>

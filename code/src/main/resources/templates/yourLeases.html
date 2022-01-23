@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>FML Welcome!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link th:href="@{../css/home.css}" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
+	integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse"
+		style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Find My Lease</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/home">Home</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Lease Inbox </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/inbox/lro">Requests for your lease</a> <a
+							class="dropdown-item" href="/inbox/lru">Your request statuses</a>
+					</div></li>
+				<li><a style="color: white; font-weight: bold">Your Leases</a></li>
+				<li><a href="/wishlist">Wishlist</a></li>
+				<li><a href="/profile/view">Profile</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="head-row">
+		<a th:href="@{/lease/add}">
+			<button type="button" class="btn1" id="heart">Advertise Your Lease</button>
+		</a>
+	</div>
+
+	<div class="content">
+		<table class="table table-striped">
+			<thead class="table-head">
+				<tr>
+					<th>Apartment</th>
+					<th>Address</th>
+					<th>Lease Type</th>
+					<th>Duration</th>
+					<th>Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lease: ${leaseList}">
+					<td><a th:href="@{/lease/view/{apt}(apt=${lease.docId})}">
+							<div>
+								<p th:text="${lease.aptName}"></p>
+							</div>
+					</a></td>
+					<td th:text="${lease.address}"></td>
+					<td th:text="${lease.leaseType}"></td>
+					<td th:text="${lease.duration}"></td>
+					<td th:text="${lease.amount}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:if="${emptyList}">
+			<h3>You have not posted any leases yet!</h3>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

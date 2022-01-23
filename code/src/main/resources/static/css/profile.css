@@ -1,0 +1,26 @@
+body {
+	background-image: url(../img/bg1.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.head-row {
+	margin-left: 3%;
+	margin-right: 3%;
+	text-align: right;
+}
+
+.content {
+	margin-top: 2%;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+table tbody {
+	background: white;
+}
+
+.col-sm-6 {
+	text-align: right;
+}

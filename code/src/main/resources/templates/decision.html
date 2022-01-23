@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>FML Welcome!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link th:href="@{../../../css/home.css}" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
+	integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse"
+		style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Find My Lease</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/home">Home</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"
+					style="color: white; font-weight: bold"> Lease Inbox </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/inbox/lro">Requests for your
+							lease</a> <a class="dropdown-item" href="/inbox/lru">Your request
+							statuses</a>
+					</div></li>
+				<li><a href="/lease">Your Leases</a></li>
+				<li><a href="/wishlist">Wishlist</a></li>
+				<li><a href="/profile/view">Profile</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="content">
+		<h2>Requester Details</h2>
+		<form th:object="${profile}" action="#"	method="post">
+			<div class="view">
+				<table class="table table-striped">
+					<tr>
+						<td>First Name</td>
+						<td th:text="${profile.fName}"></td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td th:text="${profile.lName}"></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td th:text="${profile.email}"></td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td th:text="${profile.phone}"></td>
+					</tr>
+					<tr>
+						<td>Gender</td>
+						<td th:text="${profile.gender}"></td>
+					</tr>
+				</table>
+			</div>
+			<h4 style="text-align: right">Accept request to send your
+				contact information</h4>
+			<div class="head-row">
+				<a th:href="@{/inbox/lease/lro/accepted(req=${userId}, lease=${leaseId})}">
+					<button type="button" class="btn1" id="heart">ACCEPT</button>
+				</a>
+				<a th:href="@{/inbox/lease/lro/declined(req=${userId}, lease=${leaseId})}">
+					<button type="button" class="btn1" id="heart">DECLINE</button>
+				</a>
+			</div>
+		</form>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
